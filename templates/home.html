@@ -66,7 +66,7 @@
                     <div class="card" style='border-radius: 2.15rem;opacity: 0.7;'>
                         <div class="card-body">
                             <h5 class="card-title">Departure Date</h5>
-                            <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required">
+                            <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required" onchange="getTime()">
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div class="card" style='border-radius: 2.15rem;opacity: 0.7;'>
                         <div class="card-body">
                             <h5 class="card-title">Arrival Date</h5>
-                            <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" required="required">
+                            <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" required="required" onchange="getTime()">
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="card" style='border-radius: 2.15rem;opacity: 0.7;'>
                         <div class="card-body">
                             <h5 class="card-title">Source</h5>
-                            <select name="Source" id="Source" required="required">
+                            <select name="Source" id="Source" required="required" onchange="getTime()">
                                 <option value="Delhi">Delhi</option>
                                 <option value="Kolkata">Kolkata</option>
                                 <option value="Banglore">Banglore</option>
@@ -105,7 +105,7 @@
                     <div class="card" style='border-radius: 2.15rem;opacity: 0.7;'>
                         <div class="card-body">
                             <h5 class="card-title">Destination</h5>
-                            <select name="Destination" id="Destination" required="required">
+                            <select name="Destination" id="Destination" required="required" onchange="getTime()">
                                 <option value="Cochin">Cochin</option>
                                 <option value="Delhi">Delhi</option>
                                 <option value="Banglore">Banglore</option>
@@ -123,8 +123,8 @@
                 <div class="col-sm-6">
                     <div class="card" style='border-radius: 2.15rem;opacity: 0.7;'>
                         <div class="card-body">
-                            <h5 class="card-title">Stopage</h5>
-                            <select name="stops" required="required">
+                            <h5 class="card-title">Stops</h5>
+                            <select name="stops" id="Stops" required="required" onchange="getTime()">
                                 <option value="0">Non-Stop</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -163,7 +163,7 @@
 
 
             <div style='text-align:center'>
-                <button type="submit" value='Submit' class="btn btn-primary px-5" style="font-size: 25px;">Submit</button>
+                <button type="submit" value='Submit' class="btn btn-primary px-5" style="font-size: 25px;" id="sub">Submit</button>
             </div>
         </form>
 
@@ -190,6 +190,147 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+        <script>
+            non_stop = [{source:"Banglore",destination:"Delhi",duration: 155 },
+                        {source:"Kolkata",destination:"Banglore",duration: 140 },
+                        {source:"Chennai",destination:"Kolkata",duration: 135 },
+                        {source:"Delhi",destination:"Cochin",duration: 170 },
+                        {source:"Mumbai",destination:"Hyderabad",duration: 75 }
+                       ]
+            
+            one_stop = [{source:"Kolkata",destination:"Banglore",duration: 215 },
+                        {source:"Banglore",destination:"Delhi",duration: 240 },
+                        {source:"Delhi",destination:"Cochin",duration: 265 },
+                        {source:"Mumbai",destination:"Hyderabad",duration: 195 }
+                       ]
+
+            two_stops = [{source:"Kolkata",destination:"Banglore",duration: 335 },
+                        {source:"Delhi",destination:"Cochin",duration: 425 },
+                        {source:"Banglore",destination:"Delhi",duration: 420 },
+                        {source:"Mumbai",destination:"Hyderabad",duration: 150 }
+                        ]
+
+            three_stops = [{source:"Delhi",destination:"Cochin",duration: 565 },
+                        {source:"Kolkata",destination:"Banglore",duration: 805 },
+                        {source:"Banglore",destination:"Delhi",duration: 685 },
+                        {source:"Mumbai",destination:"Hyderabad",duration: 1175 }
+                          ]
+
+            four_stops = [{source:"Banglore",destination:"Delhi",duration: 1170 }
+                         ]
+
+            function getTime()
+            {
+                var src=document.getElementById("Source").value;
+                var dst=document.getElementById("Destination").value;
+                var stops=document.getElementById("Stops").value;
+                
+                if(stops==="0")
+                {
+                    function getDuration(source, destination) {
+                            const entry = non_stop.find(entry => entry.source === source && entry.destination === destination);
+                            if (entry) {
+                                return entry.duration;
+                            } else {
+                                return "No entry found";
+                            }
+                        }
+
+                        var time=(getDuration(src,dst));
+                        console.log(time);
+                }
+
+                if(stops==="1")
+                {
+                    function getDuration(source, destination) {
+                            const entry = one_stop.find(entry => entry.source === source && entry.destination === destination);
+                            if (entry) {
+                                return entry.duration;
+                            } else {
+                                return "No entry found";
+                            }
+                        }
+
+                        var time=(getDuration(src,dst));
+                        console.log(time);
+           
+                }
+
+                if(stops==="2")
+                {
+                    function getDuration(source, destination) {
+                            const entry = two_stops.find(entry => entry.source === source && entry.destination === destination);
+                            if (entry) {
+                                return entry.duration;
+                            } else {
+                                return "No entry found";
+                            }
+                        }
+
+                        var time=(getDuration(src,dst));
+                        console.log(time);
+           
+                }
+
+                if(stops==="3")
+                {
+                    function getDuration(source, destination) {
+                            const entry = three_stops.find(entry => entry.source === source && entry.destination === destination);
+                            if (entry) {
+                                return entry.duration;
+                            } else {
+                                return "No entry found";
+                            }
+                        }
+
+                        var time=(getDuration(src,dst));
+                        console.log(time);
+           
+                }
+
+                if(stops==="4")
+                {
+                    function getDuration(source, destination) {
+                            const entry = four_stops.find(entry => entry.source === source && entry.destination === destination);
+                            if (entry) {
+                                return entry.duration;
+                            } else {
+                                return "No entry found";
+                            }
+                        }
+
+                        var time=(getDuration(src,dst));
+                        console.log(time);
+                }
+
+                  // Get the datetime input values
+                    const departureTimeInput = document.getElementById("Dep_Time");
+                    const arrivalTimeInput = document.getElementById("Arrival_Time");
+                    const departureTime = new Date(departureTimeInput.value);
+                    const arrivalTime = new Date(arrivalTimeInput.value);
+                    
+                    // Calculate the time difference in minutes
+                    const timeDiffInMs = arrivalTime.getTime() - departureTime.getTime();
+                    const timeDiffInMinutes = Math.round(timeDiffInMs / 60000);
+                    var timediff=timeDiffInMinutes;
+
+                    if(timediff<time)
+                    {
+                        alert("Time for flight not matching")
+                        document.getElementById("sub").disabled=true;
+                    }
+                    if(time==="No entry found")
+                    {
+                        alert("No Flight")
+                        document.getElementById("sub").disabled=true;
+                    }
+                    if(timediff>=time)
+                    {
+                        document.getElementById("sub").disabled=false;
+                    }
+            }
+        </script>
 
 </body>
 
