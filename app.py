@@ -12,7 +12,7 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
-@app.route('/predict',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 @cross_origin()
 def predict():
     if request.method=='POST':
