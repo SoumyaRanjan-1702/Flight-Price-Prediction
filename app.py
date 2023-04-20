@@ -12,7 +12,7 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/predict',methods=['GET','POST'])
 @cross_origin()
 def predict():
     if request.method=='POST':
@@ -283,7 +283,9 @@ def predict():
             d_Kolkata]])
 
         output = round(output[0],2)
-        return render_template('home.html',predictions='You will have to Pay approx Rs. {}'.format(output))
+        return render_template('form.html',predictions='You will have to Pay approx Rs. {}'.format(output))
+    else:
+        return render_template('form.html')
 
 
 if __name__ == '__main__':
