@@ -505,17 +505,19 @@
                 var src=document.getElementById("Source").value;
                 var dst=document.getElementById("Destination").value;
                 var stops=document.getElementById("Stops").value;
+                var airline=document.getElementById("airline").value;
                 
                 if(stops==="0")
                 {
                     function getDuration(source, destination) {
                             const entry = non_stop.find(entry => entry.source === source && entry.destination === destination);
-                            if (entry) {
+                            if (entry && entry.paths.length >0) {
                                 paths=[]
                                 paths=entry.paths;
                                 return entry.duration;
                             } else {
-                                return "No entry found";
+                               paths=[]
+                               paths.push("This airline does not operate on this route ")
                             }
                         }
 
@@ -526,13 +528,14 @@
                 if(stops==="1")
                 {
                     function getDuration(source, destination) {
-                            const entry = one_stop.find(entry => entry.source === source && entry.destination === destination);
-                            if (entry) {
+                            const entry = one_stop.find(entry => entry.source === source && entry.destination === destination && entry.airline == airline);
+                            if (entry && entry.paths.length >0) {
                                 paths=[]
                                 paths=entry.paths;
                                 return entry.duration;
                             } else {
-                                return "No entry found";
+                               paths=[]
+paths.push("This airline does not operate on this route ")
                             }
                         }
 
@@ -544,13 +547,14 @@
                 if(stops==="2")
                 {
                     function getDuration(source, destination) {
-                            const entry = two_stops.find(entry => entry.source === source && entry.destination === destination);
-                            if (entry) {
+                            const entry = two_stops.find(entry => entry.source === source && entry.destination === destination && entry.airline == airline);
+                            if (entry && entry.paths.length >0) {
                                 paths=[]
                                 paths=entry.paths;
                                 return entry.duration;
                             } else {
-                                return "No entry found";
+                               paths=[]
+paths.push("This airline does not operate on this route ")
                             }
                         }
 
@@ -562,13 +566,14 @@
                 if(stops==="3")
                 {
                     function getDuration(source, destination) {
-                            const entry = three_stops.find(entry => entry.source === source && entry.destination === destination);
-                            if (entry) {
+                            const entry = three_stops.find(entry => entry.source === source && entry.destination === destination && entry.airline == airline);
+                            if (entry && entry.paths.length >0) {
                                 paths=[]
                                 paths=entry.paths;
                                 return entry.duration;
                             } else {
-                                return "No entry found";
+                               paths=[]
+paths.push("This airline does not operate on this route ")
                             }
                         }
 
@@ -580,13 +585,15 @@
                 if(stops==="4")
                 {
                     function getDuration(source, destination) {
-                            const entry = four_stops.find(entry => entry.source === source && entry.destination === destination);
-                            if (entry) {
+                            const entry = four_stops.find(entry => entry.source === source && entry.destination === destination && entry.airline == airline);
+                            if (entry && entry.paths.length >0) {
                                 paths=[]
                                 paths=entry.paths;
                                 return entry.duration;
                             } else {
-                                return "No entry found";
+                               
+                               paths=[]
+paths.push("This airline does not operate on this route ")
                             }
                         }
 
@@ -607,12 +614,10 @@
 
                     if(timediff<time)
                     {
-                        alert("No flight available in the given Duration")
                         document.getElementById("sub").disabled=true;
                     }
                     if(time==="No entry found")
                     {
-                        alert("No Flight")
                         document.getElementById("sub").disabled=true;
                     }
                     if(timediff>=time)
