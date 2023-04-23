@@ -498,7 +498,7 @@
 
                         ]
 
-                         getTime();
+                        getTime();
 
             function getTime()
             {
@@ -518,6 +518,7 @@
                             } else {
                                paths=[]
                                paths.push("This airline does not operate on this route ")
+                               document.getElementById("sub").disabled=true;
                             }
                         }
 
@@ -536,6 +537,7 @@
                             } else {
                                paths=[]
 paths.push("This airline does not operate on this route ")
+document.getElementById("sub").disabled=true;
                             }
                         }
 
@@ -555,6 +557,7 @@ paths.push("This airline does not operate on this route ")
                             } else {
                                paths=[]
 paths.push("This airline does not operate on this route ")
+document.getElementById("sub").disabled=true;
                             }
                         }
 
@@ -574,6 +577,7 @@ paths.push("This airline does not operate on this route ")
                             } else {
                                paths=[]
 paths.push("This airline does not operate on this route ")
+document.getElementById("sub").disabled=true;
                             }
                         }
 
@@ -594,6 +598,7 @@ paths.push("This airline does not operate on this route ")
                                
                                paths=[]
 paths.push("This airline does not operate on this route ")
+document.getElementById("sub").disabled=true;
                             }
                         }
 
