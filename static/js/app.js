@@ -620,6 +620,7 @@ document.getElementById("sub").disabled=true;
                     if(timediff<time)
                     {
                         document.getElementById("sub").disabled=true;
+                        alert("Time is too short for this route");
                     }
                     if(time==="No entry found")
                     {
