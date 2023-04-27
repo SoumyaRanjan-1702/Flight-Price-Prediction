@@ -626,6 +626,11 @@ document.getElementById("sub").disabled=true;
                     {
                         document.getElementById("sub").disabled=true;
                     }
+                    if(timediff>=1440)
+                    {
+                        document.getElementById("sub").disabled=true;
+                        alert("The time duration for this route exceeds 24 hours, which is considered too long");
+                    }
                     if(timediff>=time)
                     {
                         document.getElementById("sub").disabled=false;
